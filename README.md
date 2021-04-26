@@ -11,7 +11,7 @@ En se connectant avec son compte de professeur, il aura la possibilité de :
 * Recevoir les comptes-rendus de ses élèves une fois que ceux-ci les ont remplis
 * Valider les comptes-rendus reçus
 * Créer plusieurs classes
-* Créer des comptes pour chaque élève de ces classes
+* Créer des comptes pour chaque élève de ses classes
 
 ![capture d'écran côté professeur](https://github.com/luvelut/CREXP/blob/main/prof.png) 
 
