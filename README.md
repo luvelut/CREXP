@@ -13,8 +13,13 @@ En se connectant avec son compte de professeur, il aura la possibilité de :
 * Créer plusieurs classes
 * Créer des comptes pour chaque élève de ces classes
 
+![capture d'écran côté professeur](https://github.com/luvelut/CREXP/blob/main/prof.png) 
+
 De son côté, un élève/étudiant pourra :
 * Voir ses exercices à faire et y répondre
+
+
+![capture d'écran côté élève](https://github.com/luvelut/CREXP/blob/main/eleve.png) 
 
 ## OBJECTIFS
 
