@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1> Liste de mes élèves </h1>
+    <br>
+    {% include '_flash.html.twig' %}
+
+    <a class="btn btn-secondary btn-purple" href="{{ path('teacher_student_new') }}">Ajouter un élève</a>
+    <br>
+    <br>
+    {% include 'teacher/student/partial/_filter.html.twig' with {form: form} only %}
+    <br>
+    <br>
+    {% if students|length > 0 %}
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Classe</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+            </thead>
+
+
+            {% for student in students %}
+                <tbody>
+                    <tr>
+                        <td>{{ student.id }}</td>
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.getTeam.name }}</td>
+                        <td><a class="btn btn-outline-secondary btn-sm" href="{{ path('teacher_student_edit', { 'id': student.id }) }}">Modifier</a></td>
+                        <td><a  class="btn btn-outline-danger btn-sm" href="{{ path('teacher_student_delete', { 'id': student.id }) }}">Supprimer</a></td>
+                    </tr>
+                </tbody>
+        {% endfor %}
+        </table>
+    {% else %}
+        <p>Vous n'avez pas encore d'élève à afficher.</p>
+    {% endif %}
+{% endblock %}

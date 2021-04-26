@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1> Mes comptes rendus</h1>
+    <br>
+    <br>
+
+    {% include '_flash.html.twig' %}
+    {% include 'teacher/answer/partial/_filter.html.twig' with {form: form} only %}
+    <br>
+    <br>
+
+    <div id="answer-list">
+        {% if exercises|length > 0 %}
+            <table class="table ">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Titre</th>
+                        <th>Date de rendu</th>
+                        <th>Classe</th>
+                        <th>Auteur</th>
+                        <th>Etat</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                {% for exercise in exercises %}
+                    <tbody>
+                        <tr>
+                            <td>{{ exercise.subject.title }}</td>
+                            <td>{{ exercise.getPublishedAt|date('d-m-Y') }}</td>
+                            <td>{{ exercise.subject.getTeam.name }}</td>
+                            <td>{{ exercise.student.name}}</td>
+                            {% if exercise.state == constant('App\\Entity\\Exercise::OK_ELEVE') %}
+                                <td class="badge rounded-pill bg-danger" >A VALIDER</td>
+                                <td><a class="btn btn-outline-secondary btn-sm" href="{{ path('answer_edit', { 'id': exercise.id }) }}">Valider</a></td>
+                            {% else %}
+                                <td class="badge rounded-pill bg-success">VALIDE</td>
+                                <td><a class="btn btn-outline-secondary btn-sm" href="{{ path('answer_show', { 'id': exercise.id }) }}">Voir</a></td>
+                            {% endif %}
+                        </tr>
+                    </tbody>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>Aucun élève n'a envoyé de compte-rendu.</p>
+        {% endif %}
+    </div>
+{% endblock %}

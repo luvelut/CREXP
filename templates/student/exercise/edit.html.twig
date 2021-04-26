@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+        <h1> Titre : {{ exercise.subject.title}} </h1>
+        <br>
+
+        <p><strong>Consignes :</strong></p>
+        <p>{{ exercise.subject.comment }}</p>
+
+        <p><strong> Vous devez rentrez {{ exercise.subject.getNumberValues}} valeurs expérimentales pour ce TP. </strong> </p>
+        <br>
+
+        {{ form_start(form) }}
+        {{ form_row(form.response,{ 'attr': {'class': 'form-control'} }) }}
+        <br>
+
+
+        <div class="filter-form">
+                <a class="btn btn-secondary btn-purple" href="{{asset (vich_uploader_asset (exercise.subject, 'documentFile'))}}" target="_blank">Voir le sujet</a>
+        </div>
+        <div class="filter-form">
+                <input class="btn btn-secondary btn-purple" type="submit"/>
+        </div>
+        {#
+        <div class="filter-form">
+                <a class="btn btn-secondary btn-purple" href="{{path("student_exercise_list")}}" target="_blank">Annuler</a>
+        </div>
+
+        #}
+
+
+        {{ form_end(form) }}
+
+{% endblock %}

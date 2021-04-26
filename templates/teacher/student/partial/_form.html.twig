@@ -1,0 +1,10 @@
+{{ form_start(form) }}
+{{ form_row(form.student.team,{ 'attr': {'class': 'form-control'} }) }}
+{{ form_row(form.student.name,{ 'attr': {'class': 'form-control'} }) }}
+{{ form_row(form.login,{ 'attr': {'class': 'form-control'} }) }}
+{{ form_row(form.plainPassword.first,{ 'attr': {'class': 'form-control'} }) }}
+{{ form_row(form.plainPassword.second,{ 'attr': {'class': 'form-control'} }) }}
+<br>
+<br>
+<input class="btn btn-secondary btn-purple" type="submit"/>
+{{ form_end(form) }}

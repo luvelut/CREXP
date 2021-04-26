@@ -1,0 +1,46 @@
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        from_database:
+            entity:
+                class: App\Entity\User
+                property: login
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            lazy: true
+            provider: from_database
+            logout:
+                path: /logout
+                target: /
+
+            #http_basic: true
+            form_login:
+                check_path: login
+                #default_target_path: /teacher/index
+                login_path: /
+                success_handler: redirect.after.login
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/teacher/, roles: ROLE_TEACHER }
+        - { path: ^/student/, roles: ROLE_STUDENT }
+        - { path: ^/, roles: IS_AUTHENTICATED_FULLY}
+
+
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+            cost: 12
+

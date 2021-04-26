@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <h1> Etes-vous sûr de vouloir supprimer le sujet : {{ subject.title }} ?</h1>
+    <br>
+    <br>
+    <table class="table">
+        <thead class="thead-dark">
+            <th>Titre</th>
+            <th>Date de publication</th>
+            <th>Classe</th>
+        </thead>
+        <tr>
+            <td>{{ subject.title }}</td>
+            <td>{{ subject.getPublishedAt|date('d-m-Y') }}</td>
+            <td>{{ subject.getTeam.name }}</td>
+        </tr>
+    </table>
+
+    {{ form_start(form) }}
+    <input class="btn btn-secondary btn-purple" type="submit" value="Supprimer ce sujet"/>
+    {{ form_end(form) }}
+
+{% endblock %}

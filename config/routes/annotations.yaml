@@ -1,0 +1,21 @@
+controllers:
+    resource: ../../src/Controller/
+    type: annotation
+
+student_controllers:
+    resource: ../../src/Controller/Student
+    type: annotation
+    prefix: /espace-etudiant
+    name_prefix: student_
+
+teacher_controllers:
+    resource: ../../src/Controller/Teacher
+    type: annotation
+    prefix: /espace-professeur
+    name_prefix: teacher_
+
+
+
+kernel:
+    resource: ../../src/Kernel.php
+    type: annotation

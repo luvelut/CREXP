@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1> Titre : {{ exercise.subject.title}} </h1>
+    <br>
+    <br>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th>Auteur</th>
+            <th>Valeurs expérimentales</th>
+            <th>Consignes</th>
+        </tr>
+        <tr>
+            <td>{{ exercise.student.name }}</td>
+            <td>{{ exercise.response }}</td>
+            <td>{{ exercise.subject.comment }}</td>
+        </tr>
+        </thead>
+    </table>
+    <br>
+    <br>
+    <a class="btn btn-secondary btn-purple" href="{{asset (vich_uploader_asset (exercise.subject, 'documentFile'))}}" target="_blank">Voir le sujet</a>
+
+{% endblock %}

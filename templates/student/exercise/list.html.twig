@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1> Mes exercices</h1>
+    <br>
+    <br>
+    {% include '_flash.html.twig' %}
+
+    {% include 'student/exercise/partial/_filter.html.twig' with {form: form} only %}
+    <br>
+    <br>
+    {% if exercises|length > 0 %}
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>Date de publication</th>
+                    <th>Etat</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+        {% for exercise in exercises %}
+            <tbody>
+                <tr>
+                    <td>{{ exercise.subject.title }}</td>
+                    <td>{{ exercise.student.name }}</td>
+                    <td>{{ exercise.getPublishedAt|date('d-m-Y') }}</td>
+                    {% if exercise.state == constant('App\\Entity\\Exercise::ATTENTE') %}
+                        <td class="badge rounded-pill bg-danger"> A FAIRE </td>
+                        <td><a class="btn btn-outline-danger btn-sm" href="{{ path('student_exercise_edit', { 'id': exercise.id }) }}">Répondre (exercice pas fait)</a></td>
+                    {% else %}
+                        {% if exercise.state == constant('App\\Entity\\Exercise::OK_ELEVE')  %}
+                            <td class="badge rounded-pill bg-warning"> EN ATTENTE DE VALIDATION </td>
+                            <td><a class="btn btn-outline-secondary btn-sm" href="{{ path('student_exercise_show', { 'id': exercise.id }) }}">Voir (exercice déjà fait)</a></td>
+                        {% else %}
+                            <td class="badge rounded-pill bg-success"> VALIDE </td>
+                            <td><a class="btn btn-outline-secondary btn-sm" href="{{ path('student_exercise_show', { 'id': exercise.id }) }}">Voir (exercice validé par le professeur)</a></td>
+                        {% endif %}
+                    {% endif %}
+                </tr>
+            </tbody>
+
+        {% endfor %}
+        </table>
+    {% else %}
+        <p>Les professeurs n'ont pas encore mit d'exercice en ligne.</p>
+    {% endif %}
+{% endblock %}
+
+

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <h1> Etes-vous sûr de vouloir supprimer l'élève : {{ student.name }} ?</h1>
+    <br>
+    <br>
+    <table class="table">
+        <thead class="thead-dark">
+            <th>Nom</th>
+            <th>Classe</th>
+        </thead>
+        <tr>
+            <td>{{ student.name }}</td>
+            <td>{{ student.team.name }}</td>
+        </tr>
+    </table>
+    <br>
+    {{ form_start(form) }}
+    <input class="btn btn-secondary btn-purple" type="submit" value="Supprimer cet élève"/>
+    {{ form_end(form) }}
+
+{% endblock %}

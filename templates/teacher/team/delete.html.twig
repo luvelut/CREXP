@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <h1> Etes-vous sûr de vouloir supprimer la classe : {{ team.name }} ?</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Nombre d'élèves</th>
+        </thead>
+        <tr>
+            <td>{{ team.id }}</td>
+            <td>{{ team.name }}</td>
+            <td>{{ team.getStudents|length }}</td>
+        </tr>
+    </table>
+    {{ form_start(form) }}
+    <input class="btn btn-secondary btn-purple" type="submit" value="Supprimer cette classe">
+    {{ form_end(form) }}
+
+{% endblock %}

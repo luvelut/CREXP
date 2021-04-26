@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1> Mes classes </h1>
+    <br>
+
+    {% include '_flash.html.twig' %}
+
+    <a class="btn btn-secondary btn-purple" href="{{ path("teacher_team_new") }}">Ajouter une classe</a>
+    <br>
+    <br>
+    {% include 'teacher/team/partial/_filter.html.twig' with {form: form} only %}
+    <br>
+    <br>
+
+    {% if teams|length > 0 %}
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Classe</th>
+                    <th>Nombre d'élèves</th>
+                    <th>Nombre de sujets</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+            </thead>
+
+
+            {% for team in teams %}
+                <tbody>
+                    <tr>
+                        <td>{{ team.id }}</td>
+                        <td>{{ team.name }}</td>
+                        <td>{{ team.nbStudents }}</td>
+                        <td>{{ team.nbSubjects }}</td>
+                        <td><a class="btn btn-outline-secondary btn-sm" href="{{ path('teacher_team_edit', { 'id': team.id }) }}">Modifier</a></td>
+                        {% if team.nbStudents == 0 and team.nbSubjects ==0 %}
+                            <td><a class="btn btn-outline-danger btm-sm" href="{{ path('teacher_team_delete', { 'id': team.id }) }}">Supprimer</a></td>
+                        {% endif %}
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Vous n'avez pas encore de classe à afficher.</p>
+    {% endif %}
+{% endblock %}

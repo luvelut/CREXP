@@ -1,0 +1,43 @@
+body {
+    background-color: #f4f1fa;
+}
+
+.body-content {
+    margin-left: 20%;
+    margin-right: 5%;
+}
+
+.menu-header {
+    color: white;
+    font-size: xx-large;
+}
+
+.login-body {
+    width:50%;
+    text-align: center;
+    margin-top:10%;
+    margin-left: 15%;
+}
+
+.btn-purple {
+    background-color: rebeccapurple;
+    border-color: rebeccapurple;
+}
+
+
+.form-group{
+    text-align: left;
+}
+
+
+.index-body{
+    margin-left: 20%;
+}
+
+.filter-form {
+    display: inline-block;
+}
+
+.btn-filter {
+    margin-left: 10%;
+}
