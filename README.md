@@ -1,6 +1,8 @@
 # CREXP
 [Symfony] Gestionnaire de comptes-rendus d'expériences
 
+🚀 Site en ligne disonible à l'url suivante : http://http://crexp.lestuc.fr/
+
 #### Site web réalisé dans le cadre de ma formation Symfony dans l'entreprise SFI (Saint-Etienne)
 
 ## QU'EST CE QUE C'EST ?
